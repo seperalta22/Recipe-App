@@ -1,34 +1,28 @@
 class FoodsController < ApplicationController
-
   def index
-    @foods = Food.includes(:recipe_foods, :inventory_foods).all
-  end
-  
-  def new
-    @food = Food.new
+    @foods = Food.all
   end
 
   def create
-    @food = Food.new(food_params)
-    # @recipe = Recipe.find(params[:id])
+    @food = Food.new(post_params)
     if @food.save
-      redirect_to root_path, notice: 'Post was successfully created'
+      redirect_to foods_path, notice: 'Food was successfully created.'
     else
-      flash[:alert] = 'There was an error saving this post.'
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
   def destroy
     @food = Food.find(params[:id])
-    return unless @food.destroy
-
-    redirect_to recipes_path, notice: 'Post was successfully deleted.'
+    @food.destroy
+    redirect_back_or_to root_path
   end
 
-  private
+  def new
+    @food = Food.new
+  end
 
-  def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price)
+  def post_params
+    params.require(:food).permit(:measurement_unit, :name, :price)
   end
 end

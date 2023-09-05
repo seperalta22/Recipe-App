@@ -5,12 +5,15 @@ class InventoriesController < ApplicationController
     @inventories = Inventory.all
   end
 
-  def show; end
+  def show
+    @inventory = Inventory.find(params[:id])
+    @inventory_foods = InventoryFood.where(inventory: @inventory)
+  end
 
   def create
     @inventory = User.first.inventories.new(post_params) # current_user
     if @inventory.save
-      redirect_to inventories_path, notice: 'Post was successfully created.'
+      redirect_to inventories_path, notice: 'Inventory was successfully created.'
     else
       render :new
     end
@@ -24,9 +27,5 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.find(params[:id])
     @inventory.destroy
     redirect_back_or_to root_path
-  end
-
-  def post_params
-    params.require(:inventory).permit(:title, :name)
   end
 end
