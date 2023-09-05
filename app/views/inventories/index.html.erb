@@ -17,3 +17,8 @@
     </div>
   <% end %>
 </ul>
+<%# if can? :create, inventory %>
+  <a class = "btn-container" href="<%= new_inventory_path(@user) %>">
+    <button class='new-post-btn text-center p-1 border-solid border-black border-2'>Create a new Inventory</button>
+  </a>
+<%# end %>
