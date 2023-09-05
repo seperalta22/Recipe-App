@@ -1,18 +1,13 @@
 class RecipeFoodsController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
-    @food = Food.where(id: params[:food_id]).first
+    @food = Food.find(params[:food_id])
     @recipe_foods = RecipeFood.new
   end
 
   def create
-    @recipe = Recipe.find(params[:recipe_food][:recipe_id])
-    @food = Food.find(params[:recipe_food][:food_id])
-    @recipe_food = RecipeFood.create(
-      recipe: @recipe,
-      food: @food,
-      quantity: params[:recipe_food][:quantity]
-    )
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.new(recipe_food_params)
     if @recipe_food.save
       redirect_to root_path
     else
