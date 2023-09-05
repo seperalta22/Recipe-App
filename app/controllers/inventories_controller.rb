@@ -8,7 +8,7 @@ class InventoriesController < ApplicationController
   def show; end
 
   def create
-    @inventory = User.first.inventories.new(post_params) #current_user
+    @inventory = User.first.inventories.new(post_params) # current_user
     if @inventory.save
       redirect_to inventories_path, notice: 'Post was successfully created.'
     else
@@ -17,7 +17,7 @@ class InventoriesController < ApplicationController
   end
 
   def new
-    @inventory = User.first.inventories.build #current_user
+    @inventory = User.first.inventories.build # current_user
   end
 
   def destroy
