@@ -1,14 +1,12 @@
 <h1 class="title">Recipes list</h1>
 <% @recipes.each do |recipe| %>
-  <div class="card">
-    <div class="">
-      <div>
+  <div class="card flex">
+      <div class="flex-col">
         <h5 class=""><a href="<%= recipe_path(recipe) %>" class=""><%= recipe.name %></a></h5>
         <%# if can? :manage, recipe %>
           <%= button_to "REMOVE", recipe_path(recipe), method: :delete, class: "" %>
         <%# end %>
       </div>
       <p class=""><%= recipe.description %></p>
-    </div>
   </div>
 <% end %>

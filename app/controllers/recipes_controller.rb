@@ -3,6 +3,11 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def public_index
+    @recipes = Recipe.where(public: true) # Filter for public recipes
+    @public_recipes = Recipe.includes(:recipe_foods, recipe_foods: :food).where(public: true)
+  end
+
   def show; end
 
   def create; end
