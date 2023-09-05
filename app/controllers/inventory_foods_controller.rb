@@ -1,7 +1,4 @@
 class InventoryFoodsController < ApplicationController
-
-
-  
   def new
     @inventory_id = params[:inventory_id]
     @foods = Food.all
@@ -9,7 +6,7 @@ class InventoryFoodsController < ApplicationController
   end
 
   def create
-    @inventory_food = InventoryFood.new(post_params) 
+    @inventory_food = InventoryFood.new(post_params)
     if @inventory_food.save
       redirect_to inventory_path(id: @inventory_food.inventory_id), notice: 'Food was successfully created.'
     else
@@ -26,5 +23,4 @@ class InventoryFoodsController < ApplicationController
   def post_params
     params.require(:inventory_food).permit(:food_id, :inventory_id, :quantity)
   end
-
 end
