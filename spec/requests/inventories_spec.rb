@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Inventories', type: :request do
-  describe 'GET /index' do
+  describe 'GET /public_index' do
     it 'returns http success' do
-      get '/inventories/index'
+      get '/inventories/public_index'
       expect(response).to have_http_status(:success)
     end
   end

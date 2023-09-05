@@ -1,3 +1,3 @@
 class PublicRecipesController < ApplicationController
-  def index; end
+  def public_index; end
 end
