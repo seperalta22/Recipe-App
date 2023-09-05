@@ -6,7 +6,9 @@
   <% @inventories.each do |inventory| %>
     <div class = "inventory-box" href="<%= inventory_path(inventory) %>">
       <div class = "img-container border-solid border-black border-2">
-        <a><%= inventory.name %></a> 
+        <a class = "inventory-name-link" href="<%= inventory_path(inventory) %>">
+          <%= inventory.name %>
+        </a> 
         <%# if can? :destroy, inventory %>
           <%= render partial: 'shared/delete', locals: { model: inventory, url: inventory_path(inventory) } %>   
         <%# end %>
