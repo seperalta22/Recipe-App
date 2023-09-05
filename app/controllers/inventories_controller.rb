@@ -1,5 +1,7 @@
 class InventoriesController < ApplicationController
-  def index; end
+  def index
+    @inventories = Inventory.all
+  end
 
   def show; end
 
@@ -7,5 +9,9 @@ class InventoriesController < ApplicationController
 
   def new; end
 
-  def delete; end
+  def destroy
+    @inventory = Inventory.find(params[:id])
+    @inventory.destroy
+    redirect_back_or_to root_path
+  end
 end
