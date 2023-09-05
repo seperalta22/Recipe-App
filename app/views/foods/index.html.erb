@@ -1,0 +1,31 @@
+<h1>Food Index</h1>
+<%# if can? :create, @foods %>
+  <a class = "btn-container" href="<%= new_food_path %>">
+    <button class='new-post-btn text-center p-1 border-solid border-black border-2'>Create a new Food</button>
+  </a>
+<%# end %>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Measurement unit</th>
+      <th>Unit price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= food.price %></td>
+        <td>
+          <%# if can? :destroy, inventory_food %>
+            <%= render partial: 'shared/delete', locals: { model: food, url: food_path(food) } %>   
+          <%# end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
