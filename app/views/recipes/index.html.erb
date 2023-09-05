@@ -1,12 +1,17 @@
 <h1 class="title">Recipes list</h1>
 <% @recipes.each do |recipe| %>
   <div class="card flex">
-      <div class="flex-col">
-        <h5 class=""><a href="<%= recipe_path(recipe) %>" class=""><%= recipe.name %></a></h5>
-        <%# if can? :manage, recipe %>
-          <%= button_to "REMOVE", recipe_path(recipe), method: :delete, class: "" %>
-        <%# end %>
-      </div>
-      <p class=""><%= recipe.description %></p>
+    <div class="flex-col">
+      <h5 class=""><a href="<%= recipe_path(recipe) %>" class=""><%= recipe.name %></a></h5>
+      <%# if can? :manage, recipe %>
+      <%= button_to "REMOVE", recipe_path(recipe), method: :delete, class: "" %>
+      <%# end %>
+    </div>
+    <p class=""><%= recipe.description %></p>
   </div>
 <% end %>
+
+# botton to create a new recipe
+<%# if can? :manage, recipe %>
+  <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary" %>
+<%# end %>
