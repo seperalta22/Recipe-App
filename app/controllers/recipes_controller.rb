@@ -33,9 +33,9 @@ class RecipesController < ApplicationController
 
   def toggle_public
     @recipe = Recipe.find(params[:id])
-    if @recipe.update(public: !@recipe.public)
-      redirect_to recipe_path
-    end
+    return unless @recipe.update(public: !@recipe.public)
+
+    redirect_to recipe_path
   end
 
   def shopping_list
