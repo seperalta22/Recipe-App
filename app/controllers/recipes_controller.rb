@@ -31,6 +31,13 @@ class RecipesController < ApplicationController
 
   def new; end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.save
+
+    render json: { public: @recipe.public }
+  end
+
   def shopping_list
     @inventory_obj = Inventory.find(params[:selected_inventory_id])
     @recipe_obj = Recipe.includes(recipe_foods: :food).find(params[:recipe][:recipe_id])
