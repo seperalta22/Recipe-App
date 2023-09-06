@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Controllers', type: :request do
   describe FoodsController do
-    let(:food) { Food.new(name: 'Banana', measurement_unit: "units", price: 1.2) }
+    let(:food) { Food.new(name: 'Banana', measurement_unit: 'units', price: 1.2) }
 
     describe 'GET #index' do
       before do

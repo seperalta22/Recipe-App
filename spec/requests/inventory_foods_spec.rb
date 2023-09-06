@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'InventoryFoods', type: :request do
   describe InventoryFoodsController do
     before(:each) do
-      @food = Food.create(name: 'Banana', measurement_unit: "units", price: 1.2) 
-      @user =  User.create(name: 'Tomas') 
-      @inventory =  Inventory.create(user: @user, name: 'This is Inventory 1')
-      @inventory_food = InventoryFood.create(inventory: @inventory, food: @food, quantity: 10) 
+      @food = Food.create(name: 'Banana', measurement_unit: 'units', price: 1.2)
+      @user = User.create(name: 'Tomas')
+      @inventory = Inventory.create(user: @user, name: 'This is Inventory 1')
+      @inventory_food = InventoryFood.create(inventory: @inventory, food: @food, quantity: 10)
     end
 
     describe 'GET #new' do
@@ -26,6 +26,5 @@ RSpec.describe 'InventoryFoods', type: :request do
         expect(response.body).to include('Add new Food to Inventory')
       end
     end
-    
   end
 end

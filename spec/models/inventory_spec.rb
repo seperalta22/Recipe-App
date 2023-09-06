@@ -28,8 +28,5 @@ RSpec.describe Inventory, type: :model do
       @inventory.name = 'a' * 20
       expect(@inventory).to be_valid
     end
-
   end
-
-  
 end

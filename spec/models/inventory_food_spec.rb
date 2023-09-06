@@ -5,7 +5,7 @@ RSpec.describe InventoryFood, type: :model do
     before(:each) do
       @user = User.new(name: 'Tomas')
       @user.save
-      @food = Food.new(name: 'Banana', measurement_unit: "units", price: 1.2)
+      @food = Food.new(name: 'Banana', measurement_unit: 'units', price: 1.2)
       @food.save
       @inventory = Inventory.new(user: @user, name: 'This is Inventory 1')
       @inventory.save
@@ -38,8 +38,5 @@ RSpec.describe InventoryFood, type: :model do
       @inventory_food.quantity = 3
       expect(@inventory_food).to be_valid
     end
-
   end
-
-  
 end

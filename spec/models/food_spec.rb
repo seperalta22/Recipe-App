@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Food, type: :model do
   describe 'validations' do
     before(:each) do
-      @food = Food.new(name: 'Banana', measurement_unit: "units", price: 1.2)
+      @food = Food.new(name: 'Banana', measurement_unit: 'units', price: 1.2)
       @food.save
     end
 
@@ -49,6 +49,4 @@ RSpec.describe Food, type: :model do
       expect(@food).to be_valid
     end
   end
-
-  
 end
