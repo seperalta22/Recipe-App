@@ -33,9 +33,9 @@ class RecipesController < ApplicationController
 
   def toggle_public
     @recipe = Recipe.find(params[:id])
-    @recipe.save
-
-    render json: { public: @recipe.public }
+    if @recipe.update(public: !@recipe.public)
+      redirect_to recipe_path
+    end
   end
 
   def shopping_list
