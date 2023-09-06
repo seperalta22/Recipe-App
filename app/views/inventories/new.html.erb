@@ -1,17 +1,14 @@
-<a href="<%= inventories_path %>">
-  <button id="back-btn">⬅ Back</button>
-</a>
-<h1 id = "form-title">Create a New Inventory</h1>
+<h1 id = "form-title" class= "text-center m-2">Create a New Inventory</h1>
 <%= form_with(model: [@inventory], url: inventories_path) do |form| %>
-  <div class = "form-container">
-    <div class="field">
-      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Inventory Name", class: "border-black border-solid border-2 mt-4" %>
+  <div class = "form-container mx-5">
+    <div class="form-group text-center mt-2">
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Inventory Name", class: "form-control" %>
     </div>
 
     
 
-    <div class="actions">
-      <%= form.submit 'Create Inventory' %>
+    <div class="text-center">
+      <%= form.submit 'Create Inventory', class: "btn btn-primary mt-3" %>
     </div>
   </div>
 <% end %>
