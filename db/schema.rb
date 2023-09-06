@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_222224) do
   end
 
   create_table "inventory_foods", force: :cascade do |t|
-    t.integer "quantity"
+    t.decimal "quantity"
     t.bigint "inventory_id", null: false
     t.bigint "food_id", null: false
     t.datetime "created_at", null: false

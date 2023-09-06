@@ -24,9 +24,9 @@
       <% @missing_foods.each_with_index do |missing_food, i| %>
         <tr>
           <td><%= i + 1 %></td>
-          <td><%= missing_food.food.name %></td>
-          <td><%= missing_food.quantity %></td>
-          <td>$<%= missing_food.food.price * missing_food.quantity %></td>
+          <td><%= missing_food[:food].name %></td>
+          <td><%= missing_food[:quantity_needed] %></td>
+          <td>$<%= missing_food[:food].price * missing_food[:quantity_needed] %></td>
         </tr>
       <% end %>
       </tbody>
