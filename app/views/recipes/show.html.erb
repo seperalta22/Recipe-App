@@ -1,9 +1,14 @@
 <h1><%= @recipe.name %></h1>
-<p>Preparation time: <span><%= @recipe.preparation_time %> hour </span><button><%= @recipe.public %></button></p>
+<p>Preparation time: <span><%= @recipe.preparation_time %> hour </span>
+  <button><%= @recipe.public %></button>
+</p>
 <p>Cooking time :<span><%= @recipe.cooking_time %> hour </span></p>
 <p><%= @recipe.description %></p>
 
-<button>Generate shopping list</button>
+<%# if can?( :manage, @recipe) || @recipe.public %>
+<button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Generate shopping list
+</button>
 <button><%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id) %></button>
 <hr>
 
@@ -17,7 +22,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @recipe_food.each do |recipe_food|%>
+  <% @recipe_food.each do |recipe_food| %>
     <tr>
       <td><%= recipe_food.food.name %></td>
       <td><%= recipe_food.quantity %><%= recipe_food.food.measurement_unit %></td>
@@ -27,3 +32,31 @@
   <% end %>
   </tbody>
 </table>
+
+<!--Temporary Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="exampleModalLabel">Generate Shopping List</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+      </div>
+      <div class="modal-body">
+        <p>Choose an inventory to use</p>
+        <%= form_with model: @recipe, url: shopping_list_path, method: :get do |f| %>
+          <select class="form-select" aria-label="Default select example" name="selected_inventory_id">
+            <option selected>Open this select menu</option>
+            <% @inventories.each do |inventory| %>
+              <option value="<%= inventory.id %>"><%= inventory.name %></option>
+            <% end %>
+          </select>
+          <%= f.hidden_field :recipe_id, value: @recipe.id %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= f.submit "Generate", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        </div>
+  </div>
+</div>
