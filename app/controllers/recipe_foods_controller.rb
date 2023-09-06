@@ -6,10 +6,9 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new(recipe_food_params)
     if @recipe_food.save
-      redirect_to root_path
+      redirect_to recipe_path(id: @recipe_food.recipe_id), notice: 'Food was successfully created.'
     else
       render :new, alert: 'Failed to create recipe'
     end
