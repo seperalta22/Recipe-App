@@ -1,6 +1,10 @@
 <h1><%= @recipe.name %></h1>
 <p>Preparation time: <span><%= @recipe.preparation_time %> hour </span>
-  <button><%= @recipe.toggle_public %></button>
+  <% if @recipe.public == true %>
+    <%= button_to "Make Private", toggle_public_recipe_path(@recipe), method: :patch, class: "btn btn-danger" %>
+  <% else %>
+    <%= button_to "Make Public", toggle_public_recipe_path(@recipe), method: :patch, class: "btn btn-primary" %>
+  <% end %>
 </p>
 <p>Cooking time :<span><%= @recipe.cooking_time %> hour </span></p>
 <p><%= @recipe.description %></p>
