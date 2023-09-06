@@ -1,26 +1,26 @@
-<h1>Inventories#index</h1>
-<p>Find me in app/views/inventories/index.html.erb</p>
+<h1 class= "text-center m-2">Inventories</h1>
 
 
-<ul id="inventories">
+
+<ul id="inventories" class = "m-0 p-0">
   <% @inventories.each do |inventory| %>
-    <div class = "inventory-box" href="<%= inventory_path(inventory) %>">
-      <div class = "img-container border-solid border-black border-2">
-        <a class = "inventory-name-link" href="<%= inventory_path(inventory) %>">
+    <div class = "inventory-box d-flex justify-content-center mt-3" href="<%= inventory_path(inventory) %>">
+      <div class = "col-md-3 border border-2 border-secondary d-flex flex-column justify-content-around align-items-center">
+        <a class = "btn btn-outline-primary" href="<%= inventory_path(inventory) %>">
           <%= inventory.name %>
         </a> 
         <%# if can? :destroy, inventory %>
           <%= render partial: 'shared/delete', locals: { model: inventory, url: inventory_path(inventory) } %>   
         <%# end %>
       </div>
-      <div class = "inventory-info">
-        <p class = "inventory-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra.</p>
+      <div class = "col-md-6 border border-2 border-secondary">
+        <p class = "inventory-description p-2 m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra.</p>
       </div>
     </div>
   <% end %>
 </ul>
 <%# if can? :create, inventory %>
-  <a class = "btn-container" href="<%= new_inventory_path(@user) %>">
-    <button class='new-post-btn text-center p-1 border-solid border-black border-2'>Create a new Inventory</button>
+  <a class = "d-flex justify-content-center" href="<%= new_inventory_path(@user) %>">
+    <button class='btn btn-primary mt-3'>Create a new Inventory</button>
   </a>
 <%# end %>
