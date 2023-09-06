@@ -1,11 +1,9 @@
 <h1 class= "text-center m-2">Inventories</h1>
 
-
-
 <ul id="inventories" class = "m-0 p-0">
   <% @inventories.each do |inventory| %>
     <div class = "inventory-box d-flex justify-content-center mt-3" href="<%= inventory_path(inventory) %>">
-      <div class = "col-md-3 border border-2 border-secondary d-flex justify-content-around align-items-center">
+      <div class = "col-md-3 border border-2 border-secondary d-flex justify-content-around align-items-center flex-wrap">
         <a class = "btn btn-outline-primary col-md-6 text-wrap text-break" href="<%= inventory_path(inventory) %>">
           <%= inventory.name %>
         </a> 
