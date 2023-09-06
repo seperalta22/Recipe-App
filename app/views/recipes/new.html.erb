@@ -1,33 +1,31 @@
-<h1 class="display-4">Create Recipe</h1>
+<h1 class="text-center py-4">Create Recipe</h1>
 
+<%= form_with model: @recipe, url: recipes_path, html: { class: "d-flex justify-content-center align-items-center flex-column gap-4" }, method: :post do |f| %>
 
-<%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
-
-  <div class="">
-    <%= f.label :Name %>
-    <%= f.text_field :name, class: "" %>
+  <div class="form-group col-lg-6">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="">
-    <%= f.label "Prepartion Time" %>
-    <%= f.number_field :preparation_time, class: "" %>
+  <div class="form-group col-sm-6">
+    <%= f.label :preparation_time %>
+    <%= f.number_field :preparation_time, class: "form-control" %>
   </div>
 
-  <div class="">
-    <%= f.label "Cooking Time" %>
-    <%= f.number_field :cooking_time, class: "" %>
+  <div class="form-group col-sm-6">
+    <%= f.label :cooking_time %>
+    <%= f.number_field :cooking_time, class: "form-control" %>
   </div>
 
-  <div class="">
-    <%= f.label "Description" %>
-    <%= f.text_area :description, class: "" %>
+  <div class="form-group col-sm-6">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="">
-    <%= f.check_box :public, class: "", id: "flexSwitchCheckChecked" %>
-    <%= f.label :public, class: "", for: "flexSwitchCheckChecked" %>
+  <div class="form-group col-sm-6">
+    <%= f.check_box :public, class: "form-check-input", id: "flexSwitchCheckChecked" %>
+    <%= f.label :public, class: "form-check-label", for: "flexSwitchCheckChecked" %>
   </div>
 
-  <%= f.submit "Create", class: "" %>
+  <%= f.submit "Create", class: "btn btn-primary mt-4" %>
 <% end %>
-

@@ -1,17 +1,18 @@
-<h1 class="title">Recipes list</h1>
+<h1 class="text-center py-4">Recipes list</h1>
 <% @recipes.each do |recipe| %>
-  <div class="card flex">
-    <div class="flex-col">
-      <h5 class=""><a href="<%= recipe_path(recipe) %>" class=""><%= recipe.name %></a></h5>
+  <div class="card border-secondary mb-2" style="width: 100%;">
+    <div class="card-body text-secondary d-flex justify-content-between align-items-center">
+      <div style="width: 40%;">
+      <h5 class="card-title"><a href="<%= recipe_path(recipe) %>" class="text-decoration-none text-uppercase font-weight-bold"><%= recipe.name %></a></h5>
       <%# if can? :manage, recipe %>
-      <%= button_to "REMOVE", recipe_path(recipe), method: :delete, class: "" %>
+      <%= button_to "REMOVE", recipe_path(recipe), method: :delete, data: { turbo_confirm: "Are you sure? "}, class: "text-decoration-none btn btn-danger" %>
       <%# end %>
     </div>
     <p class=""><%= recipe.description %></p>
   </div>
+</div>
 <% end %>
 
-<!-- botton to create a new recipe-->
 <%# if can? :manage, recipe %>
   <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary" %>
 <%# end %>
