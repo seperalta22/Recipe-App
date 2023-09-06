@@ -45,8 +45,8 @@ gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3.1'
 gem 'cancancan'
 gem 'devise'
-gem 'jquery-rails'
 gem 'faker'
+gem 'jquery-rails'
 gem 'rubocop'
 # Use Sass to process CSS
 # gem "sassc-rails"
