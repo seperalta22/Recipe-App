@@ -1,4 +1,4 @@
-<h1 class="text-center py-4"><%= @recipe.name %></h1>
+<h1 class="text-center py-4"><%= @recipe.name.upcase %></h1>
 <div class="d-flex justify-content-between">
   <div>
     <p class="lead">Preparation time: <span><%= @recipe.preparation_time %> hour </span></p>
@@ -14,14 +14,19 @@
   </div>
 </div>
 
-<%# if can?( :manage, @recipe) || @recipe.public %>
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Generate shopping list
-</button>
-<button type="button" class="btn btn-primary"><%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id), class: "text-white" %></button>
+<div class="d-flex justify-content-between mt-5">
+  <%# if can?( :manage, @recipe) || @recipe.public %>
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Generate shopping list
+  </button>
+  <button type="button" class="btn btn-primary">
+    <%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id), class: "text-white" %>
+  </button>
+</div>
+
 <hr>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>Food</th>
