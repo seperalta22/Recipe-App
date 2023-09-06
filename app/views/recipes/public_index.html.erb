@@ -1,20 +1,26 @@
-<h1 class="title">Public Recipes list</h1>
-<% @recipes.each do |public_recipe| %>
-  <div class="card flex">
-        <div class="flex-col">
-          <h3 class="">
-            <a href="<%= recipe_path(public_recipe) %>" class=""><%= public_recipe.name %></a></h3>
-          <h5 class="">by <%= public_recipe.user.name %></h5>
-        </div>
+<h1 class="text-center py-4">Public Recipes list</h1>
+<% @public_recipes.each do |public_recipe| %>
+  <div class="card border-secondary mb-2" style="width: 100%;">
+    <div class="card-body text-secondary d-flex justify-content-between align-items-center">
+      <div style="width: 80%;" class="d-flex justify-content-between mt-4 mb-4">
         <div>
-          <h5 class="">Total food items: <%= public_recipe.recipe_foods.count %></h5>
-          <h5 class="card-title"> Total price: <% price = 0 %>
-            <% public_recipe.recipe_foods.each do |recipe_food| %>
-              <% price_each_food_item = recipe_food.food.price * recipe_food.quantity %>
-              <% price += price_each_food_item %>
-            <% end %>
-            $<%= price %>
+          <h3 class="card-title">
+            <a href="<%= recipe_path(public_recipe) %>" class="text-decoration-none text-uppercase font-weight-bold"><%= public_recipe.name %></a>
+          </h3>
+          <h5 class="card-title">
+            by <%= public_recipe.user.name %>
           </h5>
+        </div>
+
+        <div>
+          <h5 class="card-title">
+            <strong>Total food items:</strong> <%= public_recipe.recipe_foods.count %>
+          </h5>
+          <h5 class="card-title">
+            <strong>Total price:</strong> $<%= calculate_total_price(public_recipe) %>
+          </h5>
+        </div>
       </div>
     </div>
+  </div>
 <% end %>
