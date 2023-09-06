@@ -8,7 +8,10 @@ class RecipesController < ApplicationController
     @public_recipes = Recipe.includes(:recipe_foods, recipe_foods: :food).where(public: true)
   end
 
-  def show; end
+  def show
+    @recipe = Recipe.find(params[:id])
+    @recipe_food = @recipe.recipe_foods.includes(:food)
+  end
 
   def create; end
 
