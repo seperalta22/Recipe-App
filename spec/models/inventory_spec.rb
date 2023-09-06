@@ -28,13 +28,14 @@ RSpec.describe Inventory, type: :model do
       @inventory.name = 'a' * 20
       expect(@inventory).to be_valid
     end
-  it 'belongs to a user' do
-    association = Inventory.reflect_on_association(:user)
-    expect(association.macro).to eq(:belongs_to)
-  end
+    it 'belongs to a user' do
+      association = Inventory.reflect_on_association(:user)
+      expect(association.macro).to eq(:belongs_to)
+    end
 
-  it 'has many inventory_foods' do
-    association = Inventory.reflect_on_association(:inventory_foods)
-    expect(association.macro).to eq(:has_many)
+    it 'has many inventory_foods' do
+      association = Inventory.reflect_on_association(:inventory_foods)
+      expect(association.macro).to eq(:has_many)
+    end
   end
 end
