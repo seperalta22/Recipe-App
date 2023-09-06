@@ -34,5 +34,4 @@ class InventoriesController < ApplicationController
   def post_params
     params.require(:inventory).permit(:name)
   end
-
 end
