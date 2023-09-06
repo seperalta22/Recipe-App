@@ -28,4 +28,11 @@ class InventoriesController < ApplicationController
     @inventory.destroy
     redirect_back_or_to root_path
   end
+
+  private
+
+  def post_params
+    params.require(:inventory).permit(:name)
+  end
+
 end
