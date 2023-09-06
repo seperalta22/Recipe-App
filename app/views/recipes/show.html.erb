@@ -1,2 +1,29 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1><%= @recipe.name %></h1>
+<p>Preparation time: <span><%= @recipe.preparation_time %> hour </span><button><%= @recipe.public %></button></p>
+<p>Cooking time :<span><%= @recipe.cooking_time %> hour </span></p>
+<p><%= @recipe.description %></p>
+
+<button>Generate shopping list</button>
+<button><%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id) %></button>
+<hr>
+
+<table>
+  <thead>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @recipe_food.each do |recipe_food|%>
+    <tr>
+      <td><%= recipe_food.food.name %></td>
+      <td><%= recipe_food.quantity %><%= recipe_food.food.measurement_unit %></td>
+      <td>$ <%= recipe_food.food.price %></td>
+      <td><%= link_to "Delete", recipe_food, class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

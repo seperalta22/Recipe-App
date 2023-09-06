@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :inventories, except: :update
   resources :foods, except: :update
   resources :inventory_foods
+  resources :recipe_foods, except: :update
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

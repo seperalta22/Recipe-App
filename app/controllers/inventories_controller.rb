@@ -25,7 +25,14 @@ class InventoriesController < ApplicationController
 
   def destroy
     @inventory = Inventory.find(params[:id])
+    @inventory.inventory_foods.destroy_all
     @inventory.destroy
     redirect_back_or_to root_path
+  end
+
+  private
+
+  def post_params
+    params.require(:inventory).permit(:name)
   end
 end
