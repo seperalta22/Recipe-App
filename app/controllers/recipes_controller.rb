@@ -11,11 +11,13 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_food = @recipe.recipe_foods.includes(:food)
+    @inventories = Inventory.all
   end
 
   def create
     current_user = User.first
-    recipe = Recipe.new(name: params[:name], preparation_time: params[:preparation_time], cooking_time: params[:cooking_time], description: params[:description])
+    recipe = Recipe.new(name: params[:name], preparation_time: params[:preparation_time],
+                        cooking_time: params[:cooking_time], description: params[:description])
 
     recipe.public = params[:public] == '1'
     if current_user.recipes << recipe
@@ -28,6 +30,26 @@ class RecipesController < ApplicationController
   end
 
   def new; end
+
+  def shopping_list
+    @inventory_obj = Inventory.find(params[:selected_inventory_id])
+    @recipe_obj = Recipe.includes(recipe_foods: :food).find(params[:recipe][:recipe_id])
+
+    food_names_from_inventory = @inventory_obj.inventory_foods.map do |inventory_food|
+      inventory_food.food.name.downcase
+    end
+
+    @missing_foods = @recipe_obj.recipe_foods.reject do |recipe_food|
+      food_names_from_inventory.include?(recipe_food.food.name.downcase)
+    end
+
+    @total_price = 0
+    @total_value = @missing_foods.each do |missing_food|
+      price_multiply_with_qty = missing_food.food.price * missing_food.quantity
+      @total_price += price_multiply_with_qty
+    end
+    @total_price
+  end
 
   def destroy
     @recipe = Recipe.find(params[:id])
