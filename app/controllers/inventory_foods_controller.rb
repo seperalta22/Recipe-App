@@ -20,6 +20,8 @@ class InventoryFoodsController < ApplicationController
     redirect_back_or_to root_path
   end
 
+  private
+
   def post_params
     params.require(:inventory_food).permit(:food_id, :inventory_id, :quantity)
   end

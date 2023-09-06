@@ -31,6 +31,13 @@ class RecipesController < ApplicationController
 
   def new; end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    return unless @recipe.update(public: !@recipe.public)
+
+    redirect_to recipe_path
+  end
+
   def shopping_list
     @inventory_obj = Inventory.find(params[:selected_inventory_id])
     @recipe_obj = Recipe.includes(recipe_foods: :food).find(params[:recipe][:recipe_id])
@@ -39,15 +46,33 @@ class RecipesController < ApplicationController
       inventory_food.food.name.downcase
     end
 
-    @missing_foods = @recipe_obj.recipe_foods.reject do |recipe_food|
-      food_names_from_inventory.include?(recipe_food.food.name.downcase)
+    @missing_foods = []
+    @recipe_obj.recipe_foods.each do |recipe_food|
+      inventory_name = recipe_food.food.name.downcase
+      if food_names_from_inventory.include?(inventory_name)
+        inventory_food = @inventory_obj.inventory_foods.find { |ifood| ifood.food.name.downcase == inventory_name }
+        if inventory_food.quantity < recipe_food.quantity
+
+          @missing_foods << {
+            food: inventory_food.food,
+            quantity_needed: recipe_food.quantity - inventory_food.quantity
+          }
+        end
+      else
+
+        @missing_foods << {
+          food: recipe_food.food,
+          quantity_needed: recipe_food.quantity
+        }
+      end
     end
 
     @total_price = 0
-    @total_value = @missing_foods.each do |missing_food|
-      price_multiply_with_qty = missing_food.food.price * missing_food.quantity
+    @missing_foods.each do |missing_food|
+      price_multiply_with_qty = missing_food[:food].price * missing_food[:quantity_needed]
       @total_price += price_multiply_with_qty
     end
+
     @total_price
   end
 

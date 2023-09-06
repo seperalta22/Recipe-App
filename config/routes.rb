@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   get :public_recipes, to: 'recipes#public_index'
-  resources :recipes, except: :update
+  resources :recipes do
+    member do
+      patch 'toggle_public'
+    end
+  end
   resources :inventories, except: :update
   resources :foods, except: :update
   resources :inventory_foods

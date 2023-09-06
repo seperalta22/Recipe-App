@@ -1,18 +1,32 @@
-<h1><%= @recipe.name %></h1>
-<p>Preparation time: <span><%= @recipe.preparation_time %> hour </span>
-  <button><%= @recipe.public %></button>
-</p>
-<p>Cooking time :<span><%= @recipe.cooking_time %> hour </span></p>
-<p><%= @recipe.description %></p>
+<h1 class="text-center py-4"><%= @recipe.name.upcase %></h1>
+<div class="d-flex justify-content-between">
+  <div>
+    <p class="lead">Preparation time: <span><%= @recipe.preparation_time %> hour </span></p>
+    <p class="lead">Cooking time :<span><%= @recipe.cooking_time %> hour </span></p>
+    <p class="lead"><%= @recipe.description %></p>
+  </div>
+  <div>
+    <% if @recipe.public == true %>
+      <%= button_to "Make Private", toggle_public_recipe_path(@recipe), method: :patch, class: "btn btn-danger" %>
+    <% else %>
+      <%= button_to "Make Public", toggle_public_recipe_path(@recipe), method: :patch, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
-<%# if can?( :manage, @recipe) || @recipe.public %>
-<button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Generate shopping list
-</button>
-<button><%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id) %></button>
+<div class="d-flex justify-content-between mt-5">
+  <%# if can?( :manage, @recipe) || @recipe.public %>
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Generate shopping list
+  </button>
+  <button type="button" class="btn btn-primary">
+    <%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id), class: "text-white" %>
+  </button>
+</div>
+
 <hr>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>Food</th>

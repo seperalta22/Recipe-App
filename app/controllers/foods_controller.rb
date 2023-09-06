@@ -22,6 +22,8 @@ class FoodsController < ApplicationController
     @food = Food.new
   end
 
+  private
+
   def post_params
     params.require(:food).permit(:measurement_unit, :name, :price)
   end
