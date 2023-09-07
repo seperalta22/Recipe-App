@@ -21,6 +21,9 @@
         <li>
           <%= link_to 'Public Recipes', public_recipes_path, class: "nav-link text-white" %>
         </li>
+        <li class="d-flex align-items-center">
+          <%= button_to "LogOut", destroy_user_session_path, method: :delete, class: "btn btn-outline-light btn-sm" %>
+        </li>
       </ul>
     </div>
   </div>
