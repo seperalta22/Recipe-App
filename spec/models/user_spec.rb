@@ -1,16 +1,3 @@
-# class User < ApplicationRecord
-#   has_many :inventories
-#   has_many :recipes
-#
-#   enum role: { admin: 'admin' }
-#
-#   def admin?
-#     role == 'admin'
-#   end
-# end
-
-# Path: spec/models/user_spec.rb
-
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
