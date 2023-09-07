@@ -7,7 +7,7 @@ RSpec.describe 'Inventories', type: :system do
       @user.save
       @food = Food.new(name: 'Banana', measurement_unit: 'units', price: 1.2)
       @food.save
-      @inventory1 = Inventory.new(user: @user, name: 'This is Inventory 1')
+      @inventory1 = Inventory.new(id: 1, user: @user, name: 'This is Inventory 1')
       @inventory1.save
       @inventory2 = Inventory.new(user: @user, name: 'This is Inventory 2')
       @inventory2.save
@@ -28,7 +28,7 @@ RSpec.describe 'Inventories', type: :system do
     describe 'redirects to each inventory when clicked' do
       it 'to inventory 1 when clicking on its name' do
         click_link @inventory1.name
-        expect(page).to have_current_path(inventory_path(@inventory1))
+        expect(page).to have_current_path(inventory_path(@inventory1.id))
       end
       it 'to inventory 2 when clicking on its name' do
         click_link @inventory2.name
