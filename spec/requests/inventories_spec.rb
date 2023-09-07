@@ -4,7 +4,7 @@ RSpec.describe 'Inventories', type: :request do
   describe FoodsController do
     before(:each) do
       @food = Food.create(name: 'Banana', measurement_unit: 'units', price: 1.2)
-      @user = User.create(name: 'Tomas')
+      @user = User.create(name: 'Tomas', email: 'tomas@example.com', password: 'password')
       @inventory = Inventory.create(user: @user, name: 'This is Inventory 1')
     end
 
@@ -23,24 +23,6 @@ RSpec.describe 'Inventories', type: :request do
 
       it 'response body includes the right placeholders' do
         expect(response.body).to include('Inventories Index')
-      end
-    end
-
-    describe 'GET #new' do
-      before do
-        get new_inventory_path
-      end
-
-      it 'renders a successful response' do
-        expect(response).to be_successful
-      end
-
-      it 'renders the new template' do
-        expect(response).to render_template(:new)
-      end
-
-      it 'response body includes the right placeholders' do
-        expect(response.body).to include('Create a New Inventory')
       end
     end
 

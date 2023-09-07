@@ -11,7 +11,7 @@ class InventoriesController < ApplicationController
   end
 
   def create
-    @inventory = current_user.inventories.new(post_params)
+    @inventory = current_user.inventories.new(inventory_params)
     if @inventory.save
       redirect_to inventories_path, notice: 'Inventory was successfully created.'
     else
@@ -32,7 +32,7 @@ class InventoriesController < ApplicationController
 
   private
 
-  def post_params
+  def inventory_params
     params.require(:inventory).permit(:name)
   end
 end

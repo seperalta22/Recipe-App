@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'recipes/index.html.erb', type: :view do
-  # include Devise::Test::ControllerHelpers
+  include Devise::Test::ControllerHelpers
   before do
     recipes = [
       FactoryBot.build_stubbed(:recipe, name: 'Recipe 1', description: 'Description 1'),

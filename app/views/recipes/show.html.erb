@@ -5,6 +5,7 @@
     <p class="lead">Cooking time :<span><%= @recipe.cooking_time %> hour </span></p>
     <p class="lead"><%= @recipe.description %></p>
   </div>
+  <% if can? :manage, @recipe %>
   <div>
     <% if @recipe.public == true %>
       <%= button_to "Make Private", toggle_public_recipe_path(@recipe), method: :patch, class: "btn btn-danger" %>
@@ -12,6 +13,7 @@
       <%= button_to "Make Public", toggle_public_recipe_path(@recipe), method: :patch, class: "btn btn-primary" %>
     <% end %>
   </div>
+    <% end %>
 </div>
 
 <div class="d-flex justify-content-between mt-5">
@@ -42,36 +44,12 @@
       <td><%= recipe_food.food.name %></td>
       <td><%= recipe_food.quantity %><%= recipe_food.food.measurement_unit %></td>
       <td>$ <%= recipe_food.food.price %></td>
+      <% if can? :destroy, recipe_food %>
       <td><%= link_to "Delete", recipe_food, class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<!--Temporary Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title fs-5" id="exampleModalLabel">Generate Shopping List</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Choose an inventory to use</p>
-        <%= form_with model: @recipe, url: shopping_list_path, method: :get do |f| %>
-          <select class="form-select" aria-label="Default select example" name="selected_inventory_id">
-            <option selected>Open this select menu</option>
-            <% @inventories.each do |inventory| %>
-              <option value="<%= inventory.id %>"><%= inventory.name %></option>
-            <% end %>
-          </select>
-          <%= f.hidden_field :recipe_id, value: @recipe.id %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%= f.submit "Generate", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-        </div>
-  </div>
-</div>
+<%= render 'shared/modal' %>
