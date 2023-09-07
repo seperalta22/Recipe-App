@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Inventory, type: :model do
   describe 'validations' do
     before(:each) do
-      @user = User.new(name: 'Tomas')
+      @user = User.new(name: 'Tomas', email: 'a@a.com', password: '123456')
       @user.save
       @inventory = Inventory.new(user: @user, name: 'This is Inventory 1')
       @inventory.save
