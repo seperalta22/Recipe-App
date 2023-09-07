@@ -1,21 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe 'recipes/shopping_list.html.erb', type: :view do
-  # include Devise::Test::ControllerHelpers
-  #
-  before do
-    #   user = FactoryBot.create(:user)
-    #   sign_in(user) # Sign in the user
 
+RSpec.describe 'recipes/shopping_list.html.erb', type: :view do
+  before do
     missing_foods = [
-      Struct.new(:food, :quantity).new(
-        Struct.new(:name, :price).new('Food Item', 10),
-        5
-      )
+      { food: Struct.new(:name, :price).new('Food Item', 10), quantity_needed: 5 }
     ]
     assign(:missing_foods, missing_foods)
     assign(:recipe_obj, Struct.new(:name).new('Recipe Name'))
-    assign(:total_price, 25) # Set a sample total price
+    assign(:total_price, 50)
     assign(:inventory_obj, Struct.new(:name).new('Inventory Name'))
     render
   end
@@ -24,7 +17,9 @@ RSpec.describe 'recipes/shopping_list.html.erb', type: :view do
     expect(rendered).to have_selector('h1', text: 'Shopping List')
 
     expect(rendered).to have_selector('h5', text: 'Amount of food to buy:')
-    expect(rendered).to have_selector('h5', text: 'Total value of food needed:')
+    expect(rendered).to have_selector('h5', text: 'Recipe: Recipe Name')
+    expect(rendered).to have_selector('h5', text: 'Total value of food needed: $50')
+    expect(rendered).to have_selector('h5', text: 'Inventory: Inventory Name')
 
     expect(rendered).to have_selector('thead th', text: 'Serial#')
     expect(rendered).to have_selector('thead th', text: 'Food')
@@ -35,6 +30,7 @@ RSpec.describe 'recipes/shopping_list.html.erb', type: :view do
     expect(rendered).to have_selector('tbody td', text: '1')
     expect(rendered).to have_selector('tbody td', text: 'Food Item')
     expect(rendered).to have_selector('tbody td', text: '5')
-    expect(rendered).to have_selector('tbody td', text: '$50') # Adjusted to calculate the price
+    expect(rendered).to have_selector('tbody td', text: '$50')
+
   end
 end
