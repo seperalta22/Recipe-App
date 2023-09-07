@@ -7,9 +7,9 @@
         <a class = "btn btn-outline-primary col-md-6 text-wrap text-break" href="<%= inventory_path(inventory) %>">
           <%= inventory.name %>
         </a> 
-        <%# if can? :destroy, inventory %>
+        <% if can? :destroy, inventory %>
           <%= render partial: 'shared/delete', locals: { model: inventory, url: inventory_path(inventory) } %>   
-        <%# end %>
+        <% end %>
       </div>
       <div class = "col-md-6 border border-2 border-secondary">
         <p class = "inventory-description p-2 m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra.</p>
@@ -17,8 +17,6 @@
     </div>
   <% end %>
 </ul>
-<%# if can? :create, inventory %>
-  <a class = "d-flex justify-content-center" href="<%= new_inventory_path(@user) %>">
-    <button class='btn btn-primary mt-3'>Create a new Inventory</button>
-  </a>
-<%# end %>
+<a class = "d-flex justify-content-center" href="<%= new_inventory_path(@user) %>">
+  <button class='btn btn-primary mt-3'>Create a new Inventory</button>
+</a>
