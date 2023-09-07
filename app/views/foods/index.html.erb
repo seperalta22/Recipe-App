@@ -1,9 +1,7 @@
 <h1 class= "text-center m-2">Food Index</h1>
-<%# if can? :create, @foods %>
-  <a class = "d-flex justify-content-center" href="<%= new_food_path %>">
-    <button class='btn btn-primary m-3'>Create a new Food</button>
-  </a>
-<%# end %>
+<a class = "d-flex justify-content-center" href="<%= new_food_path %>">
+  <button class='btn btn-primary m-3'>Create a new Food</button>
+</a>
 <div class="container">
   <table class="table table-bordered table-center">
     <thead>
@@ -21,9 +19,9 @@
           <td><%= food.measurement_unit %></td>
           <td><%= food.price %></td>
           <td>
-            <%# if can? :destroy, inventory_food %>
+            <% if can? :destroy, food %>
               <%= render partial: 'shared/delete', locals: { model: food, url: food_path(food) } %>   
-            <%# end %>
+            <% end %>
           </td>
         </tr>
       <% end %>

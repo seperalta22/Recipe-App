@@ -1,9 +1,7 @@
 <h1 class= "text-center m-2">Inventory Name:  <%= @inventory.name %></h1>
-<%# if can? :create, inventory %>
-  <a class = "d-flex justify-content-center" href="<%= new_inventory_food_path(inventory_id: @inventory.id) %> " >
-    <button class='btn btn-primary m-3'>Add new Food to Inventory</button>
-  </a>
-<%# end %>
+<a class = "d-flex justify-content-center" href="<%= new_inventory_food_path(inventory_id: @inventory.id) %> " >
+  <button class='btn btn-primary m-3'>Add new Food to Inventory</button>
+</a>
 <div class="container">
   <table class="table table-bordered table-center">
     <thead>
@@ -21,9 +19,9 @@
             <td><%= food.name %></td>
             <td><%= inventory_food.quantity %></td>
             <td>
-              <%# if can? :destroy, inventory_food %>
+              <% if can? :destroy, inventory_food %>
                 <%= render partial: 'shared/delete', locals: { model: inventory_food, url: inventory_food_path(inventory_food) } %>   
-              <%# end %>
+              <% end %>
             </td>
           <% else %>
             <td></td>

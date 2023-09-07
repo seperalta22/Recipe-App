@@ -15,13 +15,14 @@
 </div>
 
 <div class="d-flex justify-content-between mt-5">
-  <%# if can?( :manage, @recipe) || @recipe.public %>
   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Generate shopping list
   </button>
-  <button type="button" class="btn btn-primary">
-    <%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id), class: "text-white" %>
-  </button>
+  <% if can? :manage, @recipe %>
+    <button type="button" class="btn btn-primary">
+      <%= link_to 'Add ingredient', new_recipe_food_path(recipe_id: @recipe.id), class: "text-white" %>
+    </button>
+  <% end %>
 </div>
 
 <hr>
