@@ -13,7 +13,6 @@ RSpec.describe 'Inventories', type: :system do
       @inventory2.save
     end
 
-
     before do
       visit inventories_path
     end
