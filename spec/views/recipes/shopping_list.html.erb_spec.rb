@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'recipes/shopping_list.html.erb', type: :view do
   before do
     missing_foods = [
@@ -31,6 +30,5 @@ RSpec.describe 'recipes/shopping_list.html.erb', type: :view do
     expect(rendered).to have_selector('tbody td', text: 'Food Item')
     expect(rendered).to have_selector('tbody td', text: '5')
     expect(rendered).to have_selector('tbody td', text: '$50')
-
   end
 end
