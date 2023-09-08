@@ -1,0 +1,35 @@
+<h1 class= "text-center m-2">Inventory Name:  <%= @inventory.name %></h1>
+<a class = "d-flex justify-content-center" href="<%= new_inventory_food_path(inventory_id: @inventory.id) %> " >
+  <button class='btn btn-primary m-3'>Add new Food to Inventory</button>
+</a>
+<div class="container">
+  <table class="table table-bordered table-center">
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inventory_foods.each do |inventory_food| %>
+        <tr>
+          <% food = Food.find_by(id: inventory_food.food_id) %>
+          <% if food %>
+            <td><%= food.name %></td>
+            <td><%= inventory_food.quantity %></td>
+            <td>
+              <% if can? :destroy, inventory_food %>
+                <%= render partial: 'shared/delete', locals: { model: inventory_food, url: inventory_food_path(inventory_food) } %>   
+              <% end %>
+            </td>
+          <% else %>
+            <td></td>
+            <td></td>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>  

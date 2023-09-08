@@ -1,0 +1,14 @@
+<h1 id = "form-title" class= "text-center m-2">Create a New Inventory</h1>
+<%= form_with(model: [@inventory], url: inventories_path) do |form| %>
+  <div class = "form-container mx-5">
+    <div class="form-group text-center mt-2">
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Inventory Name", class: "form-control" %>
+    </div>
+
+    
+
+    <div class="text-center">
+      <%= form.submit 'Create Inventory', class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+<% end %>

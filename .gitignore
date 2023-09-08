@@ -29,3 +29,11 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/node_modules
+docker-compose.yml
+/postgres
+/.idea
+/app/assets/builds/*
+!/app/assets/builds/.keep
+.idea

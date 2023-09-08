@@ -23,28 +23,28 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Recipe App ](#-about-project)
-    - [🛠 Built With ](#-built-with-)
-        - [Tech Stack ](#tech-stack-)
-        - [Key Features ](#key-features-)
-    - [💻 Getting Started ](#-getting-started-)
-        - [Prerequisites](#prerequisites)
-        - [Setup](#setup)
-        - [Install](#install)
-        - [Usage](#usage)
-        - [Run tests](#run-tests)
-    - [👥 Authors ](#-authors-)
-    - [🔭 Future Features ](#-future-features-)
-    - [🤝 Contributing ](#-contributing-)
-    - [⭐️ Show your support ](#️-show-your-support-)
-    - [🙏 Acknowledgments ](#-acknowledgments-)
-    - [📝 License ](#-license-)
+- [📖 Recipe App ](#-recipe-app-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+    - [Run tests](#run-tests)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Recipe App <a name="about-project"></a>
 
-> TODO
+> The Recipe app is a classic example of a blog website. It's a fully functional website where the logged user can manage foods, inventories recipies and generate a shopping list.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -69,9 +69,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **TODO**
-- ****
-- ****
+- **Devise**
+- **CanCanCan**
+- **Create and remove Foods, Inventories and Recipes**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -99,11 +99,9 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-```
-gem install ruby
-gem install rails
-sudo apt-get install postgresql postgresql-contrib
-```
+- Ruby
+- Rails
+- Postgres
 
 
 ### Setup
@@ -137,7 +135,7 @@ To run the project, run the following command:
 To run tests, run the following command:
 
 ```
-    rspec
+    rspec --format documentation
 ```
 
 <!-- ### Deployment
@@ -158,21 +156,34 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 Sergio Peralta
+👤 **Sergio Peralta**
 
 - GitHub: [@SergioPeralta22](https://github.com/SergioPeralta22)
 - Twitter: [@SePeralta22](https://twitter.com/SePeralta22)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/sergioperalta22)
 
+👤 **Martín Ezequiel González**
+
+- GitHub: [@Mar12358](https://github.com/Mar12358)
+- Twitter: [@MarezegonZ](https://twitter.com/MarezegonZ)
+- LinkedIn: [Martin Ezequiel Gonzalez](https://www.linkedin.com/in/martin-ezequiel/)
+
+👤 **Lincoln Gibson**
+- GitHub: [lincoln1883](https://github.com/lincoln1883)
+- Twitter: [lincolngibson7](https://twitter.com/lincolngibson7)
+- LinkedIn : [lincoln-gibson](https://linkedin.com/in/lincoln-gibson)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
 <!-- FUTURE FEATURES -->
+
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **TODO**
-- [ ] ****
+- **Improve Style**
+- **Add API endpoints.**
+- **API documentation.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -199,7 +210,7 @@ If you like this project,please give it a ⭐️!
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse for giving me the opportunity to learn and grow as a developer.
+We would like to thank all Microverse team.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

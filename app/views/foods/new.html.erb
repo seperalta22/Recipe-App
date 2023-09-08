@@ -1,0 +1,20 @@
+<h1 id = "form-title" class= "text-center m-2">Add new Food</h1>
+<%= form_with(model: [@food], url: foods_path) do |form| %>
+  <div class = "form-container mx-5">
+    <div class="form-group text-center mt-2">
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Food Name", class: "form-control" %>
+    </div>
+    <div class="form-group text-center mt-2">
+      <%= form.text_field :measurement_unit, autofocus: true, autocomplete: "measurement_unit", placeholder: "Measurement Unit", class: "form-control" %>
+    </div>
+    <div class="form-group text-center mt-2">
+      <%= form.number_field :price, autofocus: true, autocomplete: "price", placeholder: "Price", class: "form-control" %>
+    </div>
+
+
+
+    <div class="text-center">
+      <%= form.submit 'Create Food', class: "btn btn-primary mt-3"%>
+    </div>
+  </div>
+<% end %>
