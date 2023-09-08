@@ -87,6 +87,4 @@ test:
 production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
-  database: remote_pg
-  username: remote_pg_user
-  password: <%= ENV["DATABASE_URL"] %>
+
