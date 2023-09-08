@@ -1,24 +1,20 @@
-<a href="<%= inventory_foods_path %>">
-  <button id="back-btn">⬅ Back</button>
-</a>
-
-<h1 id = "form-title">Add new Food to Inventory</h1>
+<h1 id = "form-title", class = "text-center m-2">Add new Food to Inventory</h1>
 <%= form_with(model: [@inventory_food], url: inventory_foods_path) do |form| %>
   <div class = "form-container">
-    <div class="field">
+    <div class="form-group text-center mt-2">
       <%= form.hidden_field :inventory_id, value: @inventory_id %>
     </div>
-    <div class="field">
-      <%= form.collection_select :food_id, Food.all, :id, :name, prompt: "Select a Food" %>
+    <div class="form-group text-center mt-2">
+      <%= form.collection_select(:food_id, Food.all, :id, :name, { prompt: "Select a Food" }, { class: "form-select" }) %>
     </div>
-    <div class="field">
-      <%= form.number_field :quantity, autofocus: true, autocomplete: "quantity", placeholder: "Quantity", class: "border-black border-solid border-2 mt-4" %>
+    <div class="form-group text-center mt-2">
+      <%= form.number_field :quantity, autofocus: true, autocomplete: "quantity", placeholder: "Quantity", class: "form-control" %>
     </div>
 
     
 
-    <div class="actions">
-      <%= form.submit 'Add Food to Inventory' %>
+    <div class="text-center">
+      <%= form.submit 'Add Food to Inventory', class: "btn btn-primary mt-3"%>
     </div>
   </div>
 <% end %>
