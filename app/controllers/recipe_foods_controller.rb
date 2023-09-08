@@ -15,10 +15,11 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
+    @recipe_id = params[:recipe_id]
     @recipe_food = RecipeFood.find(params[:id])
     return unless @recipe_food.destroy
 
-    redirect_to recipes_path, notice: 'Post was successfully deleted.'
+    redirect_to recipe_path(id: @recipe_food.recipe_id), notice: 'Post was successfully deleted.'
   end
 
   private

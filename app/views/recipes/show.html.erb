@@ -34,7 +34,7 @@
   <tr>
     <th>Food</th>
     <th>Quantity</th>
-    <th>Value</th>
+    <th>Value per Unit</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -42,7 +42,7 @@
   <% @recipe_food.each do |recipe_food| %>
     <tr>
       <td><%= recipe_food.food.name %></td>
-      <td><%= recipe_food.quantity %><%= recipe_food.food.measurement_unit %></td>
+      <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
       <td>$ <%= recipe_food.food.price %></td>
       <% if can? :destroy, recipe_food %>
       <td><%= link_to "Delete", recipe_food, class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %></td>
