@@ -30,10 +30,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore credentials.
-/config/database.yml
-
-
 /node_modules
 docker-compose.yml
 /postgres
