@@ -1,18 +1,18 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: recipe-postgresql-app
+    databaseName: recipe_postgresql_app
+    user: recipe_postgresql_app_user
 
 services:
   - type: web
-    name: mysite
+    name: recipe-app-capstone
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec rails s"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: recipe-postgresql-app
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false    
