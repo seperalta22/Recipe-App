@@ -44,7 +44,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3.1'
 gem 'cancancan'
-gem 'devise'
+gem 'devise', '~> 4.9.0'
 gem 'faker'
 gem 'jquery-rails'
 gem 'rubocop'

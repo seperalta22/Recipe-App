@@ -312,7 +312,7 @@ DEPENDENCIES
   cancancan
   capybara
   debug
-  devise
+  devise (~> 4.9.0)
   factory_bot_rails
   faker
   importmap-rails
