@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe InventoryFood, type: :model do
   describe 'validations' do
     before(:each) do
-      @user = User.new(name: 'Tomas', email: 'a@a.com', password: '123456')
+      @user = User.new(name: 'Tom', email: 'a@aa.com', password: '123456')
       @user.save
       @food = Food.new(name: 'Banana', measurement_unit: 'units', price: 1.2)
       @food.save
