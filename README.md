@@ -1,14 +1,12 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <br/>
-  <br/>
+
   <br/>
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
 
 [//]: # (  <img src="./app/assets/images/logo3.svg" alt="logo" width="400"  height="auto" />)
-  <br/>
-  <br/>
+
   <br/>
   <h1><b>Recipe App</b></h1><a name="about-project"></a>
 </div>
@@ -27,6 +25,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -76,15 +75,15 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- - Not available
-
-## 🚀 Live Demo <a name="live-demo"></a> -->
 
 
+## 🚀 Live Demo <a name="live-demo"></a>
 
-<!-- - [Live Demo Link](<replace-with-your-deployment-URL>)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+
+- [Live Demo Link](https://recipe-app-onhi.onrender.com)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p> 
 
 <!-- GETTING STARTED -->
 
